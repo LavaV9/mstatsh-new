@@ -1,6 +1,6 @@
 const model = require('../models/user');
 const Item = require('../models/Item');
-
+const Offer = require('../models/offer');
 exports.new = (req, res) => {
   res.render('./user/new');
 };

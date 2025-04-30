@@ -1,7 +1,7 @@
 const Offer = require('../models/offer');
 const Item = require('../models/Item');
 
-exports.makeOffer = async (req, res, next) => {
+exports.createOffer = async (req, res, next) => {
   const itemId = req.params.id;
   const offerAmount = parseFloat(req.body.amount);
   const userId = req.session.user._id;
