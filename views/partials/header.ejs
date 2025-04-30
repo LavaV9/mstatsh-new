@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/generalStyles.css">
+    <link rel="stylesheet" href="/css/browse.css">
+    <link rel="stylesheet" href="/css/sell.css">
+    <link rel="stylesheet" href="/css/edit.css">
+    <title>MStash</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav class="header">
+        <div class="title-container">
+            <a href="/" class="logo-name">
+                <h1>MStash</h1>
+            </a>
+            <img src="/images/logo.png" alt="Meowth">
+        </div>
+        <form action="/items" method="GET" class="search-bar-form">
+            <input type="text" placeholder="Search for items..." name="q" value="<%= searchQuery || '' %>">
+            <button type="submit">Search</button>
+        </form>
+        
+        <div class="nav">
+            <a href="/items">Browse</a>
+            <a href="/items/new">Sell</a>
+            <% if (!currentUser) { %>
+                <a href='/users/new'>Sign Up</a>
+                <a href='/users/login'>Login</a>
+            <% } else { %>
+                <a href='/users/profile'>Profile</a>
+                <a href='/users/logout'>Logout</a>
+            <% } %>
+        </div>
+    </nav>
+
+    <% if (typeof errorMessages !== 'undefined' && errorMessages.length > 0) { %>
+        <% errorMessages.forEach(message => { %>
+            <div class='error'>
+                <%= message %>
+            </div>
+        <% }); %>
+    <% } %>
+
+    <% if (typeof successMessages !== 'undefined' && successMessages.length > 0) { %>
+        <% successMessages.forEach(message => { %>
+            <div class='success'>
+                <%= message %>
+            </div>
+        <% }); %>
+    <% } %>

@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="profile-container container">
+    <h2>Welcome, <%= user.firstName %>!</h2>
+
+    <!-- User Listings -->
+    <section>
+        <h3>Your Listings</h3>
+        <% if (items.length) { %>
+            <ul>
+                <% items.forEach(item => { %>
+                    <li>
+                        <a href="/items/<%= item._id %>"><%= item.title %></a>
+                        <% if (!item.active) { %> <span>(Closed)</span> <% } %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>You haven't created any listings yet.</p>
+        <% } %>
+    </section>
+
+    <!-- Offers Made -->
+    <section>
+        <h3>Offers You've Made</h3>
+        <% if (offersMade.length) { %>
+            <ul>
+                <% offersMade.forEach(offer => { %>
+                    <li>
+                        $<%= offer.amount %> on 
+                        <a href="/items/<%= offer.item._id %>"><%= offer.item.title %></a> —
+                        Status: <%= offer.status %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>You haven't made any offers yet.</p>
+        <% } %>
+    </section>
+
+    <!-- Offers Received -->
+    <section>
+        <h3>Offers on Your Listings</h3>
+        <% if (offersReceived.length) { %>
+            <ul>
+                <% offersReceived.forEach(offer => { %>
+                    <li>
+                        $<%= offer.amount %> from <%= offer.user.firstName %> —
+                        On: <a href="/items/<%= offer.item._id %>"><%= offer.item.title %></a> —
+                        Status: <%= offer.status %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>You haven't received any offers yet.</p>
+        <% } %>
+    </section>
+</div>
+
+<%- include('../partials/footer.ejs') %>

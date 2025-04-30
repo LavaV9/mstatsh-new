@@ -1,0 +1,38 @@
+.sell-container {
+    background-color: #52397b;
+    margin: 50px auto; 
+    padding: 30px; 
+    width: 50%; 
+    max-width: 600px; 
+    text-align: center;
+    font-family: impact;
+    border-radius: 10px;
+}
+
+.sell-container p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f6734a;
+}
+
+.sell-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    text-align: left;
+    font-family: impact;
+}
+
+.sell-form label {
+    font-size: 20px;
+    color: #f6734a;
+}
+
+.sell-form input,
+.sell-form select,
+.sell-form textarea {
+    border-radius: 8px;
+    padding: 10px; 
+    background-color: white;
+    font-family: impact;
+}

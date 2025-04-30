@@ -1,0 +1,43 @@
+<%- include('./partials/header.ejs') %>
+
+<% if (items.length > 0) { %>
+    <div class="listings">
+        <% items.forEach(item => { %>
+            <div class="item">
+                <a href="/items/<%= item.id %>">
+                    <img height="400px" src="/images/<%= item.image %>" alt="<%= item.title %>">
+                </a>
+                <div class="details">
+                    <h2>
+                        <a href="/items/<%= item.id %>"><%= item.title %></a>
+                    </h2>
+                    <p>Condition: <%= item.condition %></p>
+                    <p>Price: $<%= item.price %></p>
+                    <p>Seller: <%= item.seller %></p>
+                    <p><%= item.details %></p>
+                    
+                    <% if (item.totalOffers > 0) { %>
+                        <p>Offers:</p>
+                        <ul>
+                            <% item.offers.forEach(offer => { %>
+                                <li>
+                                    <strong>Offer by: </strong><%= offer.user.name %> |
+                                    <strong>Amount: </strong>$<%= offer.amount %> |
+                                    <strong>Status: </strong><%= offer.status %>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    <% } else { %>
+                        <p>No offers yet.</p>
+                    <% } %>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+<% } else { %>
+    <div class="no-items">
+        <h1>No items currently listed.</h1>
+    </div>
+<% } %>
+
+<%- include('./partials/footer.ejs') %>
